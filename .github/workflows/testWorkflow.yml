@@ -24,7 +24,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: run main.py
+    - name: Run Test
       env:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
           SOURCE_COMMIT: ${{ github.sha }}

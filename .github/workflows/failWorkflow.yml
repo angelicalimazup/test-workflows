@@ -27,5 +27,5 @@ jobs:
         python-version: '3.x'
     - name: Run Fail Build
       run: |
-        python main.py
+        pytest test_workflow.py
 
