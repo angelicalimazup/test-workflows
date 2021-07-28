@@ -12,7 +12,7 @@ def workflow_status(workflowFile):
                "content-type": "application/json",
                "authorization": "Bearer " + GITHUB_TOKEN}
     r = requests.get(endpoint, headers=headers).json()
-    return r['workflow_runs'][-1]['status']
+    return r#['workflow_runs'][-1]['status']
 
 
 if __name__ == '__main__':
