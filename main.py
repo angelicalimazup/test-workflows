@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 
 GITHUB_TOKEN = os.environ['TOKEN_GITHUB']
 
@@ -17,5 +18,6 @@ if __name__ == '__main__':
     workflowFile = "failWorkflow.yml"
     while workflow_status(workflowFile) == 'queued':
         print(workflow_status(workflowFile))
+        time.sleep(2)
 
 print(workflow_status(workflowFile))
