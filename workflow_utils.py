@@ -1,4 +1,6 @@
 import os
+import time
+
 import requests
 
 GITHUB_TOKEN = os.environ['TOKEN_GITHUB']
@@ -16,7 +18,7 @@ def workflow_status(workflowFile):
         if run['head_sha'] == HASH_COMMIT:
             workflow = run
     print(workflow)
-    #time.sleep(60)
+    time.sleep(60)
     return workflow['conclusion']
 
 
