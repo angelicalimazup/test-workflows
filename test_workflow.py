@@ -8,4 +8,4 @@ class TestClass(TestCase):
         workflowFile = "failWorkflow.yml"
         workflow = workflow_status(workflowFile)
         print(workflow)
-        assert "failureiii" == workflow_status(workflow)
+        assert "failure" == workflow_status(workflow)
