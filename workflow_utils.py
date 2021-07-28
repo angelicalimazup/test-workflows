@@ -15,7 +15,7 @@ def workflow_status(workflowFile):
     for run in r['workflow_runs']:
         if run['head_sha'] == HASH_COMMIT:
             workflow = run
-    print(workflow)
+
     #time.sleep(60)
     return workflow['conclusion']
 
