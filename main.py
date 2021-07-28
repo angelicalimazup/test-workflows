@@ -12,7 +12,13 @@ def workflow_status(workflowFile):
                "content-type": "application/json",
                "authorization": "Bearer " + GITHUB_TOKEN}
     r = requests.get(endpoint, headers=headers).json()
-    return r['workflow_runs'][-1]
+
+    for v in r['workflow_runs']:
+
+        if v['head_sha'] == HASH_COMMIT:
+            workflow = v
+
+    return workflow
 
 
 if __name__ == '__main__':
