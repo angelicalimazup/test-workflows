@@ -27,6 +27,7 @@ jobs:
     - name: run main.py
       env:
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+          SOURCE_COMMIT: ${{ github.sha }}
       run: |
         python main.py
 
