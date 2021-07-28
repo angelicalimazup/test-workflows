@@ -15,7 +15,7 @@ def workflow_status(workflowFile):
 
 if __name__ == '__main__':
     workflowFile = "failWorkflow.yml"
-    while workflow_status(workflowFile) != 'queued':
+    while workflow_status(workflowFile) == 'queued':
         print(workflow_status(workflowFile))
 
 print(workflow_status(workflowFile))
