@@ -10,11 +10,11 @@ def workflow_status(workflowFile):
                "content-type": "application/json",
                "authorization": "Bearer " + GITHUB_TOKEN}
     r = requests.get(endpoint, headers=headers).json()
-    return r['workflow_runs'][-2]['status']
+    return r['workflow_runs'][-1]['status']
 
 
 if __name__ == '__main__':
-    workflowFile = "testWorkFlow.yml"
+    workflowFile = "failWorkflow.yml"
     while workflow_status(workflowFile) != 'queued':
         print(workflow_status(workflowFile))
 
