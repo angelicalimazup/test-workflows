@@ -1,2 +1,2 @@
-requests==2.8.1
+requests
 pytest
