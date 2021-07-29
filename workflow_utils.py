@@ -14,13 +14,14 @@ def workflow_status(workflow_file):
                "authorization": "Bearer " + GITHUB_TOKEN}
     r = requests.get(endpoint, headers=headers).json()
 
-    while "'conclusion': None" in json.dumps(r['workflow_runs']):
+    while r['workflow_runs'].get('conclusion', None) is None:
         r = requests.get(endpoint, headers=headers).json()
         time.sleep(5)
 
     for run in r['workflow_runs']:
         if run['head_sha'] == HASH_COMMIT:
             workflow = run
+            break
 
     print(workflow)
     return workflow['conclusion']
