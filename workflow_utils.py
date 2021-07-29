@@ -1,6 +1,7 @@
 import json
 import os
 import time
+
 import requests
 
 GITHUB_TOKEN = os.environ['TOKEN_GITHUB']
@@ -12,18 +13,17 @@ def workflow_status(workflow_file):
     headers = {"accept": "application/vnd.github.v3+json",
                "content-type": "application/json",
                "authorization": "Bearer " + GITHUB_TOKEN}
-    r = requests.get(endpoint, headers=headers).json()
 
-    while r['workflow_runs'].get('conclusion', None) is None:
-        r = requests.get(endpoint, headers=headers).json()
+    workflow_complete = False
+    while not workflow_complete:
         time.sleep(5)
-
-    for run in r['workflow_runs']:
-        if run['head_sha'] == HASH_COMMIT:
-            workflow = run
-            break
+        r = requests.get(endpoint, headers=headers).json()
+        for run in r['workflow_runs']:
+            if run['head_sha'] == HASH_COMMIT:
+                workflow = run
+                break
+        if workflow['workflow_runs'].get('conclusion') is not 'None':
+            workflow_complete = True
 
     print(workflow)
     return workflow['conclusion']
-
-
