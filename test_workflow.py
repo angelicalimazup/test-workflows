@@ -5,4 +5,6 @@ from workflow_utils import workflow_status
 class TestClass(TestCase):
     def test_fail_workflow(self):
         workflow_file = "failWorkflow.yml"
-        assert "failure" == workflow_status(workflow_file)
+        wm = workflow_status(workflow_file)
+        print(wm)
+        assert "failure" == wm
