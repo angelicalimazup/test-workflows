@@ -1,3 +1,4 @@
+import json
 import os
 import time
 import requests
@@ -13,7 +14,7 @@ def workflow_status(workflow_file):
                "authorization": "Bearer " + GITHUB_TOKEN}
     r = requests.get(endpoint, headers=headers).json()
 
-    while "'conclusion': None" in r['workflow_runs']:
+    while "'conclusion': None" in json.dumps(r['workflow_runs']):
         r = requests.get(endpoint, headers=headers).json()
         time.sleep(5)
 
