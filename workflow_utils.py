@@ -18,10 +18,10 @@ def workflow_status(workflow_file):
     while not workflow_complete:
         time.sleep(5)
         r = requests.get(endpoint, headers=headers).json()
-        print(workflow)
         for run in r['workflow_runs']:
             if run['head_sha'] == HASH_COMMIT:
                 workflow = run
+                print(workflow)
                 break
         if workflow.get('conclusion') != 'None':
             workflow_complete = True
