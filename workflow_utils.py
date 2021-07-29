@@ -22,7 +22,7 @@ def workflow_status(workflow_file):
             if run['head_sha'] == HASH_COMMIT:
                 workflow = run
                 break
-        if workflow['workflow_runs'].get('conclusion') is not 'None':
+        if workflow['workflow_runs'].get('conclusion') != 'None':
             workflow_complete = True
 
     print(workflow)
