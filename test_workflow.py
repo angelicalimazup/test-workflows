@@ -8,5 +8,5 @@ class TestClass(TestCase):
         assert "failure" == workflow_status(workflow_file)
 
     def test_success_workflow(self):
-        workflow_file = "SuccessWorkflow.yml"
+        workflow_file = "successWorkflow.yml"
         assert "success" == workflow_status(workflow_file)
