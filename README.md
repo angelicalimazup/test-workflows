@@ -1,2 +1,2 @@
-#github workflow test
+# Github workflow test
 Simple integration test of github workflow runs
